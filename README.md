@@ -1,4 +1,4 @@
-# live-app
+# liveAdmin
 
 ## Project setup
 ```
