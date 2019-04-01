@@ -1,9 +1,15 @@
 <template>
 	<div id="app">
-		<div class="appContainer">
+		<div class="appContainer" @click="isShowAppPanel=false,isShowSetupPanel=false,isShowNotifyPanel=false,isShowHelpPanel=false,isShowAccountPanel=false">
 			<div class="top">
 				<div class="left">
-					<el-button class="icon menu" icon="el-icon-menu" title="应用"></el-button>
+					<el-button
+            class="icon menu"
+            :class="{active: isShowAppPanel}"
+            icon="el-icon-menu"
+            title="应用"
+            @click.stop="isShowAppPanel=!isShowAppPanel,isShowSetupPanel=false,isShowNotifyPanel=false,isShowHelpPanel=false,isShowAccountPanel=false"
+          ></el-button>
 					<router-link class="logo" to="/">liveAdmin</router-link>
 				</div>
 				<div class="middle">
@@ -14,10 +20,35 @@
 					</div>
 				</div>
 				<div class="right">
-					<el-button class="icon setup" icon="el-icon-setting" title="设置"></el-button>
-					<el-badge :value="99" :hidden="false" class="badge"><el-button class="icon notify" icon="el-icon-bell" title="通知"></el-button></el-badge>
-					<el-button class="icon help" icon="el-icon-service" title="帮助"></el-button>
-					<el-button class="icon avatar">
+					<el-button
+            class="icon setup"
+            :class="{active: isShowSetupPanel}"
+            icon="el-icon-setting"
+            title="设置"
+            @click.stop="isShowSetupPanel=!isShowSetupPanel,isShowAppPanel=false,isShowNotifyPanel=false,isShowHelpPanel=false,isShowAccountPanel=false"
+          ></el-button>
+					<el-badge :value="99" :hidden="false" class="badge">
+            <el-button
+              class="icon notify"
+              :class="{active: isShowNotifyPanel}"
+              icon="el-icon-bell"
+              title="通知"
+              @click.stop="isShowNotifyPanel=!isShowNotifyPanel,isShowAppPanel=false,isShowSetupPanel=false,isShowHelpPanel=false,isShowAccountPanel=false"
+            ></el-button>
+          </el-badge>
+					<el-button
+            class="icon help"
+            :class="{active: isShowHelpPanel}"
+            icon="el-icon-service"
+            title="帮助"
+            @click.stop="isShowHelpPanel=!isShowHelpPanel,isShowAppPanel=false,isShowSetupPanel=false,isShowNotifyPanel=false,isShowAccountPanel=false"
+          ></el-button>
+					<el-button
+            class="icon avatar"
+            :class="{active: isShowAccountPanel}"
+            title="账户"
+            @click.stop="isShowAccountPanel=!isShowAccountPanel,isShowAppPanel=false,isShowSetupPanel=false,isShowNotifyPanel=false,isShowHelpPanel=false"
+          >
 						<img src="https://cid-9346acc584c117d8.users.storage.live.com/users/0x9346acc584c117d8/myprofile/expressionprofile/profilephoto:UserTileStatic,UserTileSmall/MeControlMediumUserTile?ck=1&amp;ex=24&amp;fofoff=1" alt="">
 					</el-button>
 				</div>
@@ -80,13 +111,34 @@
           </div>
 				</el-card>
 				<div class="side">
-					sdf
-				</div>
+          tip:
+        </div>
 			</div>
 		</div>
-		<div class="appList">
-			<div class="panel">
+		<div class="appPanel" :class="{active:isShowAppPanel}">
+			<el-scrollbar class="panel">
+      <div class="grid">
+        <a href="#">
+					<i class="el-icon-share"></i>
+					<span>客户系统</span>
+				</a>
 				<a href="#">
+					<i class="el-icon-goods"></i>
+					<span>基础系统</span>
+				</a>
+				<a href="#">
+					<i class="el-icon-time"></i>
+					<span>OA系统</span>
+				</a>
+				<a href="#">
+					<i class="el-icon-edit"></i>
+					<span>edit</span>
+				</a>
+				<a href="#">
+					<i class="el-icon-tickets"></i>
+					<span>tickets</span>
+				</a>
+        <a href="#">
 					<i class="el-icon-share"></i>
 					<span>share</span>
 				</a>
@@ -106,8 +158,149 @@
 					<i class="el-icon-tickets"></i>
 					<span>tickets</span>
 				</a>
-			</div>
+        <a href="#">
+					<i class="el-icon-share"></i>
+					<span>share</span>
+				</a>
+				<a href="#">
+					<i class="el-icon-goods"></i>
+					<span>goods</span>
+				</a>
+				<a href="#">
+					<i class="el-icon-time"></i>
+					<span>time</span>
+				</a>
+				<a href="#">
+					<i class="el-icon-edit"></i>
+					<span>edit</span>
+				</a>
+				<a href="#">
+					<i class="el-icon-tickets"></i>
+					<span>tickets</span>
+				</a>
+        <a href="#">
+					<i class="el-icon-share"></i>
+					<span>share</span>
+				</a>
+				<a href="#">
+					<i class="el-icon-goods"></i>
+					<span>goods</span>
+				</a>
+				<a href="#">
+					<i class="el-icon-time"></i>
+					<span>time</span>
+				</a>
+				<a href="#">
+					<i class="el-icon-edit"></i>
+					<span>edit</span>
+				</a>
+				<a href="#">
+					<i class="el-icon-tickets"></i>
+					<span>tickets</span>
+				</a>
+        <a href="#">
+					<i class="el-icon-share"></i>
+					<span>share</span>
+				</a>
+				<a href="#">
+					<i class="el-icon-goods"></i>
+					<span>goods</span>
+				</a>
+				<a href="#">
+					<i class="el-icon-time"></i>
+					<span>time</span>
+				</a>
+				<a href="#">
+					<i class="el-icon-edit"></i>
+					<span>edit</span>
+				</a>
+				<a href="#">
+					<i class="el-icon-tickets"></i>
+					<span>tickets</span>
+				</a>
+        <a href="#">
+					<i class="el-icon-share"></i>
+					<span>share</span>
+				</a>
+				<a href="#">
+					<i class="el-icon-goods"></i>
+					<span>goods</span>
+				</a>
+				<a href="#">
+					<i class="el-icon-time"></i>
+					<span>time</span>
+				</a>
+				<a href="#">
+					<i class="el-icon-edit"></i>
+					<span>edit</span>
+				</a>
+				<a href="#">
+					<i class="el-icon-tickets"></i>
+					<span>tickets</span>
+				</a>
+        <a href="#">
+					<i class="el-icon-share"></i>
+					<span>share</span>
+				</a>
+				<a href="#">
+					<i class="el-icon-goods"></i>
+					<span>goods</span>
+				</a>
+				<a href="#">
+					<i class="el-icon-time"></i>
+					<span>time</span>
+				</a>
+				<a href="#">
+					<i class="el-icon-edit"></i>
+					<span>edit</span>
+				</a>
+				<a href="#">
+					<i class="el-icon-tickets"></i>
+					<span>tickets</span>
+				</a>
+
+      </div>
+			</el-scrollbar>
 		</div>
+    <div class="setupPanel" :class="{active:isShowSetupPanel}">
+      <div class="panel">
+        <div class="heading">
+          <span class="title">快速设置</span>
+          <i class="close el-icon-close" @click.stop="isShowSetupPanel=false"></i>
+        </div>
+        <div class="body"></div>
+      </div>
+    </div>
+    <div class="notifyPanel" :class="{active:isShowNotifyPanel}">
+      <div class="panel">
+        <div class="heading">
+          <span class="title">通知</span>
+          <i class="close el-icon-close" @click.stop="isShowNotifyPanel=false"></i>
+        </div>
+        <div class="body"></div>
+      </div>
+    </div>
+    <div class="helpPanel" :class="{active:isShowHelpPanel}">
+      <div class="panel">
+        <div class="heading">
+          <span class="title">帮助</span>
+          <i class="close el-icon-close" @click.stop="isShowHelpPanel=false"></i>
+        </div>
+        <div class="body"></div>
+      </div>
+    </div>
+    <div class="accountPanel" :class="{active:isShowAccountPanel}">
+      <div class="panel">
+        <div class="heading">
+          <span class="title">我的账户</span>
+          <i class="close el-icon-close" @click.stop="isShowAccountPanel=false"></i>
+        </div>
+        <div class="body">
+          <p><a href="">编辑个人资料</a></p>
+          <p><a href="">退出登录</a></p>
+        </div>
+      </div>
+    </div>
 	</div>
 </template>
 <script>
@@ -178,7 +371,13 @@ export default {
       label: 'CMS'
     }];
     return {
-      data5: JSON.parse(JSON.stringify(data))
+      data5: JSON.parse(JSON.stringify(data)),
+
+      isShowAppPanel: false,
+      isShowSetupPanel: false,
+      isShowNotifyPanel: false,
+      isShowHelpPanel: false,
+      isShowAccountPanel: false
     }
   },
   methods: {
@@ -239,6 +438,7 @@ body{
 				color: #fff;
 				background: none;
 				border: none;
+        border-radius: 0;
 				&:hover{
 					background: #005a9e;
 				}
@@ -246,6 +446,10 @@ body{
 					outline: 1px solid;
 					outline-offset: -1px;
 				}
+        &.active:hover{
+          color: var(--themePrimary);
+          background: var(--white);
+        }
 			}
 			&>.left{
 				display: flex;
@@ -259,6 +463,10 @@ body{
 				button.icon{
 					padding: 15px;
 					font-size: 18px;
+          &.active{
+            color: var(--themePrimary);
+            background: var(--white);
+          }
 				}
 				.logo{
 					margin-left: 1em;
@@ -513,19 +721,117 @@ body{
 			}
 		}
 	}
-	.apps{
+	.appPanel{
 		position: fixed;
-		z-index: 1000000;
+		z-index: 1;
 		top: 0px;
 		left: 0px;
 		width: 100vw;
 		height: 100vh;
-		visibility: hidden;
+    display: none;
+    pointer-events: none;
+    &.active{
+      display: block;
+    }
 		.panel{
 			position: absolute;
 			top: 48px;
 			width: 320px;
+      height: 100%;
+      background-color: var(--white);
+      box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 30px 0px;
+      pointer-events: auto;
+      .grid{
+        display: grid;
+        grid-template-columns: auto auto auto;
+        grid-gap: 10px;
+        justify-content: center;
+        margin-top: 25px;
+        margin-bottom: 75px;
+        a{
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          width: 80px;
+          height: 80px;
+          background: var(--neutralLighterAlt);
+          color: inherit;
+          text-decoration: none;
+          &:hover{
+            color: var(--white);
+            background: var(--themePrimary);
+            i{
+              color: var(--white);
+            }
+          }
+          i{
+            margin-bottom: 10px;
+            font-size: 30px;
+            color: var(--themePrimary);
+          }
+          span{
+            font-size: 12px;
+          }
+        }
+      }
+
 		}
 	}
+  .setupPanel,
+  .notifyPanel,
+  .helpPanel,
+  .accountPanel{
+    position: fixed;
+		z-index: 1;
+		top: 0px;
+		left: 0px;
+		width: 100vw;
+		height: 100vh;
+    display: none;
+    pointer-events: none;
+    &.active{
+      display: block;
+    }
+    .panel{
+      position: absolute;
+			top: 48px;
+      right: 0;
+			width: 320px;
+      height: 100%;
+      background-color: var(--white);
+      box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 30px 0px;
+      pointer-events: auto;
+      .heading{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px 0;
+        height: 65px;
+        .title{
+          font-size: 22px;
+          font-weight: 100;
+        }
+        .close{
+          font-size: 18px;
+        }
+      }
+    }
+  }
+  .accountPanel{
+    .body{
+      display: flex;
+      flex-direction: column;
+      padding: 10px 20px 0;
+      font-size: 14px;
+      p{
+        margin: 10px 0;
+      }
+      a{
+        color: var(--themePrimary);
+        text-decoration: none;
+      }
+    }
+  }
 }
 </style>
