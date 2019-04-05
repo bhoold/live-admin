@@ -1,14 +1,14 @@
 <template>
 	<div id="app">
-		<div class="appContainer" @click="isShowAppPanel=false,isShowSetupPanel=false,isShowNotifyPanel=false,isShowHelpPanel=false,isShowAccountPanel=false">
+		<div class="appContainer" @click="currentSidePanel=''">
 			<div class="top">
 				<div class="left">
 					<el-button
             class="icon menu"
-            :class="{active: isShowAppPanel}"
+            :class="{active: currentSidePanel==='appPanel'}"
             icon="el-icon-menu"
             title="应用"
-            @click.stop="isShowAppPanel=!isShowAppPanel,isShowSetupPanel=false,isShowNotifyPanel=false,isShowHelpPanel=false,isShowAccountPanel=false"
+            @click.stop="currentSidePanel!=='appPanel'?currentSidePanel='appPanel':currentSidePanel=''"
           ></el-button>
 					<router-link class="logo" to="/">liveAdmin</router-link>
 				</div>
@@ -22,32 +22,32 @@
 				<div class="right">
 					<el-button
             class="icon setup"
-            :class="{active: isShowSetupPanel}"
+            :class="{active: currentSidePanel==='setupPanel'}"
             icon="el-icon-setting"
             title="设置"
-            @click.stop="isShowSetupPanel=!isShowSetupPanel,isShowAppPanel=false,isShowNotifyPanel=false,isShowHelpPanel=false,isShowAccountPanel=false"
+            @click.stop="currentSidePanel!=='setupPanel'?currentSidePanel='setupPanel':currentSidePanel=''"
           ></el-button>
 					<el-badge :value="99" :hidden="false" class="badge">
             <el-button
               class="icon notify"
-              :class="{active: isShowNotifyPanel}"
+              :class="{active: currentSidePanel==='notifyPanel'}"
               icon="el-icon-bell"
               title="通知"
-              @click.stop="isShowNotifyPanel=!isShowNotifyPanel,isShowAppPanel=false,isShowSetupPanel=false,isShowHelpPanel=false,isShowAccountPanel=false"
+              @click.stop="currentSidePanel!=='notifyPanel'?currentSidePanel='notifyPanel':currentSidePanel=''"
             ></el-button>
           </el-badge>
 					<el-button
             class="icon help"
-            :class="{active: isShowHelpPanel}"
+            :class="{active: currentSidePanel==='helpPanel'}"
             icon="el-icon-service"
             title="帮助"
-            @click.stop="isShowHelpPanel=!isShowHelpPanel,isShowAppPanel=false,isShowSetupPanel=false,isShowNotifyPanel=false,isShowAccountPanel=false"
+            @click.stop="currentSidePanel!=='helpPanel'?currentSidePanel='helpPanel':currentSidePanel=''"
           ></el-button>
 					<el-button
             class="icon avatar"
-            :class="{active: isShowAccountPanel}"
+            :class="{active: currentSidePanel==='accountPanel'}"
             title="账户"
-            @click.stop="isShowAccountPanel=!isShowAccountPanel,isShowAppPanel=false,isShowSetupPanel=false,isShowNotifyPanel=false,isShowHelpPanel=false"
+            @click.stop="currentSidePanel!=='accountPanel'?currentSidePanel='accountPanel':currentSidePanel=''"
           >
 						<img src="https://cid-9346acc584c117d8.users.storage.live.com/users/0x9346acc584c117d8/myprofile/expressionprofile/profilephoto:UserTileStatic,UserTileSmall/MeControlMediumUserTile?ck=1&amp;ex=24&amp;fofoff=1" alt="">
 					</el-button>
@@ -111,11 +111,18 @@
           </div>
 				</el-card>
 				<div class="side">
-          tip:
+          <div class="heading">
+            <span class="title">小技巧：</span>
+          </div>
+          <div class="body">
+            2011年，参加过台北奥美的一个培训，很精彩，我还记得讲师是一个戴着黑框眼镜的男纸，他对洞察（insight）的描述是我听过最精妙的。他说，一个牛逼的洞察能激发消费者的3重反应。
+          </div>
         </div>
 			</div>
 		</div>
-		<div class="appPanel" :class="{active:isShowAppPanel}">
+
+    <!-- 侧边弹窗 -->
+		<div class="appPanel" :class="{active:currentSidePanel==='appPanel'}">
 			<el-scrollbar class="panel">
       <div class="grid">
         <a href="#">
@@ -262,42 +269,130 @@
       </div>
 			</el-scrollbar>
 		</div>
-    <div class="setupPanel" :class="{active:isShowSetupPanel}">
+    <div class="setupPanel" :class="{active:currentSidePanel==='setupPanel'}">
       <div class="panel">
         <div class="heading">
           <span class="title">快速设置</span>
-          <i class="close el-icon-close" @click.stop="isShowSetupPanel=false"></i>
+          <i class="close el-icon-close" @click="currentSidePanel=''"></i>
         </div>
-        <div class="body"></div>
+        <div class="body">
+          <div class="content">
+            <div class="moreSetup">
+              <el-button type="text" @click="isShowSetupModal=true,currentSidePanel=''">显示全部设置</el-button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="notifyPanel" :class="{active:isShowNotifyPanel}">
+    <div class="notifyPanel" :class="{active:currentSidePanel==='notifyPanel'}">
       <div class="panel">
         <div class="heading">
           <span class="title">通知</span>
-          <i class="close el-icon-close" @click.stop="isShowNotifyPanel=false"></i>
+          <i class="close el-icon-close" @click="currentSidePanel=''"></i>
         </div>
         <div class="body"></div>
       </div>
     </div>
-    <div class="helpPanel" :class="{active:isShowHelpPanel}">
+    <div class="helpPanel" :class="{active:currentSidePanel==='helpPanel'}">
       <div class="panel">
         <div class="heading">
           <span class="title">帮助</span>
-          <i class="close el-icon-close" @click.stop="isShowHelpPanel=false"></i>
+          <i class="close el-icon-close" @click="currentSidePanel=''"></i>
         </div>
         <div class="body"></div>
       </div>
     </div>
-    <div class="accountPanel" :class="{active:isShowAccountPanel}">
+    <div class="accountPanel" :class="{active:currentSidePanel==='accountPanel'}">
       <div class="panel">
         <div class="heading">
           <span class="title">我的账户</span>
-          <i class="close el-icon-close" @click.stop="isShowAccountPanel=false"></i>
+          <i class="close el-icon-close" @click="currentSidePanel=''"></i>
         </div>
         <div class="body">
-          <p><a href="">编辑个人资料</a></p>
-          <p><a href="">退出登录</a></p>
+          <ul>
+            <li><el-button type="text">编辑个人资料</el-button></li>
+            <li><el-button type="text">退出登录</el-button></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 设置modal -->
+    <div class="setupModal" :class="{active:isShowSetupModal}">
+      <div class="container">
+        <div class="menuPanel">
+          <div class="heading">
+            设置
+          </div>
+          <div class="body">
+            <ul>
+              <li class="item">常规</li>
+              <li class="item">邮件</li>
+              <li class="item active">日历</li>
+            </ul>
+            <div class="lessSetup">
+              <el-button type="text" icon="el-icon-back" @click="isShowSetupModal=false,currentSidePanel='setupPanel'">转到常用设置</el-button>
+            </div>
+          </div>
+        </div>
+        <div class="subPanel">
+          <el-scrollbar class="body">
+          <ul>
+            <li class="item">布局</li>
+            <li class="item">规则</li>
+            <li class="item active">整理</li>
+            <li class="item">附件</li>
+            <li class="item">同步</li>
+            <li class="item">答复</li>
+            <li class="item">附件</li>
+            <li class="item">同步</li>
+            <li class="item">答复</li>
+            <li class="item">附件</li>
+            <li class="item">同步</li>
+            <li class="item">答复</li>
+            <li class="item">附件</li>
+            <li class="item">同步</li>
+            <li class="item">答复</li>
+            <li class="item">附件</li>
+            <li class="item">同步</li>
+            <li class="item">答复</li>
+            <li class="item">附件</li>
+            <li class="item">同步</li>
+            <li class="item">答复</li>
+            <li class="item">附件</li>
+            <li class="item">同步</li>
+            <li class="item">答复</li>
+            <li class="item">附件</li>
+            <li class="item">同步</li>
+            <li class="item">答复</li>
+            <li class="item">附件</li>
+            <li class="item">同步</li>
+            <li class="item">答复</li>
+            <li class="item">附件</li>
+            <li class="item">同步</li>
+            <li class="item">答复</li>
+            <li class="item">附件</li>
+            <li class="item">同步</li>
+            <li class="item">答复</li>
+            <li class="item">附件</li>
+            <li class="item">同步</li>
+            <li class="item">答复</li>
+
+          </ul>
+          </el-scrollbar>
+        </div>
+        <div class="contentPanel">
+          <div class="heading">
+            <div class="title">布局</div>
+            <div>
+              <el-button type="primary">保存</el-button>
+              <el-button>放弃</el-button>
+              <i class="close el-icon-close" @click="isShowSetupModal=false"></i>
+            </div>
+          </div>
+          <div class="body">
+            2
+          </div>
         </div>
       </div>
     </div>
@@ -306,78 +401,78 @@
 <script>
 export default {
   data() {
-    const data = [{
-      id: 1,
-      icon: '',
-      label: '基础设置',
-      children: [{
+    const data = [
+      {
         id: 1,
-        label: '网站设置'
-      },{
+        icon: '',
+        label: '基础设置',
+        children: [{
+          id: 1,
+          label: '网站设置'
+        },{
+          id: 2,
+          label: '支付设置'
+        },{
+          id: 3,
+          label: '微信设置'
+        },{
+          id: 4,
+          label: '邮箱设置'
+        },{
+          id: 5,
+          label: '短信设置'
+        }]
+      }, {
         id: 2,
-        label: '支付设置'
-      },{
+        label: '商品管理',
+        children: [{
+          id: 5,
+          label: '列表'
+        }, {
+          id: 6,
+          label: '属性'
+        }]
+      }, {
         id: 3,
-        label: '微信设置'
-      },{
+        label: '销售',
+        children: [{
+          id: 7,
+          label: '二级 3-1'
+        }, {
+          id: 8,
+          label: '二级 3-2'
+        }]
+      }, {
         id: 4,
-        label: '邮箱设置'
-      },{
+        label: '客户',
+        children: [{
+          id: 7,
+          label: '二级 3-1'
+        }, {
+          id: 8,
+          label: '二级 3-2'
+        }]
+      }, {
         id: 5,
-        label: '短信设置'
-      }]
-    }, {
-      id: 2,
-      label: '商品管理',
-      children: [{
-        id: 5,
-        label: '列表'
+        label: '报表',
+        children: [{
+          id: 7,
+          label: '二级 3-1'
+        }, {
+          id: 8,
+          label: '二级 3-2'
+        }]
       }, {
         id: 6,
-        label: '属性'
-      }]
-    }, {
-      id: 3,
-      label: '销售',
-      children: [{
-        id: 7,
-        label: '二级 3-1'
-      }, {
-        id: 8,
-        label: '二级 3-2'
-      }]
-    }, {
-      id: 4,
-      label: '客户',
-      children: [{
-        id: 7,
-        label: '二级 3-1'
-      }, {
-        id: 8,
-        label: '二级 3-2'
-      }]
-    }, {
-      id: 5,
-      label: '报表',
-      children: [{
-        id: 7,
-        label: '二级 3-1'
-      }, {
-        id: 8,
-        label: '二级 3-2'
-      }]
-    }, {
-      id: 6,
-      label: 'CMS'
-    }];
+        label: 'CMS'
+      }
+    ];
     return {
       data5: JSON.parse(JSON.stringify(data)),
 
-      isShowAppPanel: false,
-      isShowSetupPanel: false,
-      isShowNotifyPanel: false,
-      isShowHelpPanel: false,
-      isShowAccountPanel: false
+      currentSidePanel: '',
+
+      isShowSetupModal: true
     }
   },
   methods: {
@@ -407,12 +502,17 @@ body, div{
 
 body{
 	width: 100%;
-    min-width: 1008px;
-    height: 100%;
-    overflow-y: hidden;
-    overflow-x: auto;
-    position: absolute;
+  min-width: 1008px;
+  height: 100%;
+  font-weight: 300;
+  overflow-y: hidden;
+  overflow-x: auto;
+  position: absolute;
+  font-size: 16px;
 }
+
+
+
 #app{
     height: 100%;
     width: 100%;
@@ -599,7 +699,7 @@ body{
             }
             .item{
               &.parent{
-                font-weight: bold;
+                font-weight: 400;
               }
               .icon{
                 padding: 15px;
@@ -718,7 +818,21 @@ body{
 				flex: 0 0 auto;
 				width: 300px;
         background-color: var(--neutralLighter);
-			}
+        .heading{
+          padding: 10px 20px 0;
+          height: 50px;
+          box-sizing: border-box;
+          .title{
+            font-size: 22px;
+            font-weight: 100;
+          }
+        }
+        .body{
+          padding: 0 20px 10px;
+          font-size: 14px;
+          font-weight: 100;
+        }
+      }
 		}
 	}
 	.appPanel{
@@ -794,6 +908,8 @@ body{
       display: block;
     }
     .panel{
+      display: flex;
+      flex-direction: column;
       position: absolute;
 			top: 48px;
       right: 0;
@@ -810,26 +926,149 @@ body{
         height: 65px;
         .title{
           font-size: 22px;
-          font-weight: 100;
+          font-weight: 300;
         }
         .close{
           font-size: 18px;
+        }
+      }
+      .body{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 0 20px;
+        button{
+          font-weight: 300;
+        }
+      }
+    }
+  }
+  .setupPanel{
+    .body{
+      .content{
+        .moreSetup{
+          button{
+            font-weight: 300;
+          }
         }
       }
     }
   }
   .accountPanel{
     .body{
-      display: flex;
-      flex-direction: column;
-      padding: 10px 20px 0;
-      font-size: 14px;
-      p{
-        margin: 10px 0;
+      ul{
+        margin: 0;
+        padding: 0;
       }
-      a{
-        color: var(--themePrimary);
-        text-decoration: none;
+      li{
+        list-style: none;
+      }
+    }
+  }
+
+  .setupModal{
+    position: fixed;
+		z-index: 1;
+		top: 0px;
+		left: 0px;
+		width: 100vw;
+		height: 100vh;
+    display: none;
+    background-color: var(--blackTranslucent40);
+    &.active{
+      display: block;
+    }
+    .container{
+      display: flex;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      height: 90vh;
+      width: 90vw;
+      background: var(--white);
+      box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 5px 0px;
+      ul{
+        margin: 0;
+        padding: 0;
+      }
+      li{
+        list-style: none;
+      }
+      .menuPanel{
+        width: 220px;
+        height: 100%;
+        border-right: 1px solid var(--neutralLight);
+        background-color: var(--neutralLighter);
+        .heading{
+          padding: 20px;
+          font-size: 22px;
+          font-weight: 400;
+        }
+        .body{
+          .item{
+            padding: 8px 20px;
+            &.active{
+              font-weight: 400;
+              background-color: var(--themeLighter);
+            }
+            &:hover{
+              background-color: var(--neutralLight);
+            }
+          }
+          .lessSetup{
+            padding: 8px 20px;
+            button{
+              font-weight: 300;
+            }
+          }
+        }
+      }
+      .subPanel{
+        flex: 0 0 auto;
+        width: 200px;
+        height: 100%;
+        text-overflow: ellipsis;
+        border-right: 1px solid var(--neutralLight);
+        .body{
+          padding: 20px 0;
+          height: 100%;
+          box-sizing: border-box;
+          overflow: hidden;
+        }
+        .item{
+          padding: 8px 20px;
+          &.active{
+            background-color: var(--themeLighter);
+          }
+          &:hover{
+            background-color: var(--neutralLight);
+          }
+        }
+      }
+      .contentPanel{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        .heading{
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0 20px;
+          height: 65px;
+          border-bottom: 1px solid var(--neutralLight);
+          .title{
+            font-size: 22px;
+            font-weight: 400;
+          }
+
+          .close{
+            font-size: 18px;
+          }
+        }
+        .body{
+          flex: 1;
+        }
       }
     }
   }
