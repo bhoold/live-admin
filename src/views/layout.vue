@@ -52,7 +52,8 @@
           <div class="list">
           <el-scrollbar class="listContainer">
             <div class="wrap">
-              test
+              <el-button class="liveTheme">test 测试</el-button>
+              <el-button class="liveTheme" type="primary">主要按钮</el-button>
             </div>
           </el-scrollbar>
           </div>

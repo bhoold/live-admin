@@ -1,0 +1,52 @@
+.el-button.liveTheme+.el-button.liveTheme{
+  margin-left: 16px;
+}
+.el-button.liveTheme{
+  padding: 0 16px;
+  height: 32px;
+  min-width: 80px;
+  border-radius: 0;
+  border: 1px solid transparent;
+  outline: transparent;
+  font-size: 14px;
+  font-weight: 400;
+  background-color: var(--neutralLighter);
+  color: var(--neutralPrimary);
+  box-sizing: border-box;
+  &:hover{
+    background-color: var(--neutralLight);
+    color: var(--neutralDark);
+    border-color: transparent;
+    cursor: pointer;
+  }
+  &:active{
+    background-color: var(--neutralTertiaryAlt);
+    color: var(--neutralDark);
+  }
+  &:focus{
+    outline: 0;
+  }
+
+  &.is-disabled{
+    background-color: var(--neutralLighter);
+    color: var(--neutralTertiary);
+    cursor: default;
+  }
+
+  &.el-button--primary{
+    background-color: var(--themePrimary);
+    color: var(--white);
+    &:hover{
+      background-color: var(--themeDarkAlt);
+    }
+    &:active{
+      background-color: var(--themeDark);
+    }
+
+    &.is-disabled{
+      background-color: var(--neutralLighter);
+      color: var(--neutralTertiary);
+      cursor: default;
+    }
+  }
+}

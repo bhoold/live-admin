@@ -1,6 +1,6 @@
 <template>
   <div class="setupModal" @click="close">
-    <div class="container">
+    <div class="container" @click.stop="">
       <div class="menuPanel">
         <div class="heading">设置</div>
         <div class="body">
@@ -10,7 +10,7 @@
             <li class="item active">日历</li>
           </ul>
           <div class="lessSetup">
-            <el-button type="text" icon="el-icon-back" @click="lessSetup">转到常用设置</el-button>
+            <el-button type="text" icon="el-icon-back" @click="lessSetup">转到快速设置</el-button>
           </div>
         </div>
       </div>
@@ -64,14 +64,131 @@
         <div class="heading">
           <div class="title">布局</div>
           <div>
-            <el-button type="primary">保存</el-button>
-            <el-button>放弃</el-button>
+            <el-button class="liveTheme" type="primary">保存</el-button>
+            <el-button class="liveTheme">放弃</el-button>
             <i class="close el-icon-close" @click="close"></i>
           </div>
         </div>
-        <div class="body">
-          2
-        </div>
+        <el-scrollbar class="body">
+          <div class="item">
+            <div class="heading">重点收件箱</div>
+            <div class="body">
+              <div class="item">
+                <div>你希望 Outlook 如何排序电子邮件，来帮助你专注于最重要的问题?</div>
+                <el-radio-group v-model="radio2">
+                  <div><el-radio :label="3">备选项</el-radio></div>
+                  <div><el-radio :label="6">备选项</el-radio></div>
+                  <div><el-radio :label="9">备选项</el-radio></div>
+                </el-radio-group>
+              </div>
+              <div class="item">
+                <div>你希望 Outlook 如何排序电子邮件，来帮助你专注于最重要的问题?</div>
+                <el-radio-group v-model="radio2">
+                  <div><el-radio :label="3">备选项</el-radio></div>
+                  <div><el-radio :label="6">备选项</el-radio></div>
+                  <div><el-radio :label="9">备选项</el-radio></div>
+                </el-radio-group>
+              </div>
+              <div class="item">
+                <div>你希望 Outlook 如何排序电子邮件，来帮助你专注于最重要的问题?</div>
+                <el-radio-group v-model="radio2">
+                  <div><el-radio :label="3">备选项</el-radio></div>
+                  <div><el-radio :label="6">备选项</el-radio></div>
+                  <div><el-radio :label="9">备选项</el-radio></div>
+                </el-radio-group>
+              </div>
+              <div class="item">
+                <div>你希望 Outlook 如何排序电子邮件，来帮助你专注于最重要的问题?</div>
+                <el-radio-group v-model="radio2">
+                  <div><el-radio :label="3">备选项</el-radio></div>
+                  <div><el-radio :label="6">备选项</el-radio></div>
+                  <div><el-radio :label="9">备选项</el-radio></div>
+                </el-radio-group>
+              </div>
+              <div class="item">
+                <div>你希望 Outlook 如何排序电子邮件，来帮助你专注于最重要的问题?</div>
+                <el-radio-group v-model="radio2">
+                  <div><el-radio :label="3">备选项</el-radio></div>
+                  <div><el-radio :label="6">备选项</el-radio></div>
+                  <div><el-radio :label="9">备选项</el-radio></div>
+                </el-radio-group>
+              </div>
+              <div class="item">
+                <div>你希望 Outlook 如何排序电子邮件，来帮助你专注于最重要的问题?</div>
+                <el-radio-group v-model="radio2">
+                  <div><el-radio :label="3">备选项</el-radio></div>
+                  <div><el-radio :label="6">备选项</el-radio></div>
+                  <div><el-radio :label="9">备选项</el-radio></div>
+                </el-radio-group>
+              </div>
+              <div class="item">
+                <div>你希望 Outlook 如何排序电子邮件，来帮助你专注于最重要的问题?</div>
+                <el-radio-group v-model="radio2">
+                  <div><el-radio :label="3">备选项</el-radio></div>
+                  <div><el-radio :label="6">备选项</el-radio></div>
+                  <div><el-radio :label="9">备选项</el-radio></div>
+                </el-radio-group>
+              </div>
+              <div class="item">
+                <div>你希望 Outlook 如何排序电子邮件，来帮助你专注于最重要的问题?</div>
+                <el-radio-group v-model="radio2">
+                  <div><el-radio :label="3">备选项</el-radio></div>
+                  <div><el-radio :label="6">备选项</el-radio></div>
+                  <div><el-radio :label="9">备选项</el-radio></div>
+                </el-radio-group>
+              </div>
+              <div class="item">
+                <div>你希望 Outlook 如何排序电子邮件，来帮助你专注于最重要的问题?</div>
+                <el-radio-group v-model="radio2">
+                  <div><el-radio :label="3">备选项</el-radio></div>
+                  <div><el-radio :label="6">备选项</el-radio></div>
+                  <div><el-radio :label="9">备选项</el-radio></div>
+                </el-radio-group>
+              </div>
+              <div class="item">
+                <div>你希望 Outlook 如何排序电子邮件，来帮助你专注于最重要的问题?</div>
+                <el-radio-group v-model="radio2">
+                  <div><el-radio :label="3">备选项</el-radio></div>
+                  <div><el-radio :label="6">备选项</el-radio></div>
+                  <div><el-radio :label="9">备选项</el-radio></div>
+                </el-radio-group>
+              </div>
+              <div class="item">
+                <div>你希望 Outlook 如何排序电子邮件，来帮助你专注于最重要的问题?</div>
+                <el-radio-group v-model="radio2">
+                  <div><el-radio :label="3">备选项</el-radio></div>
+                  <div><el-radio :label="6">备选项</el-radio></div>
+                  <div><el-radio :label="9">备选项</el-radio></div>
+                </el-radio-group>
+              </div>
+              <div class="item">
+                <div>你希望 Outlook 如何排序电子邮件，来帮助你专注于最重要的问题?</div>
+                <el-radio-group v-model="radio2">
+                  <div><el-radio :label="3">备选项</el-radio></div>
+                  <div><el-radio :label="6">备选项</el-radio></div>
+                  <div><el-radio :label="9">备选项</el-radio></div>
+                </el-radio-group>
+              </div>
+              <div class="item">
+                <div>你希望 Outlook 如何排序电子邮件，来帮助你专注于最重要的问题?</div>
+                <el-radio-group v-model="radio2">
+                  <div><el-radio :label="3">备选项</el-radio></div>
+                  <div><el-radio :label="6">备选项</el-radio></div>
+                  <div><el-radio :label="9">备选项</el-radio></div>
+                </el-radio-group>
+              </div>
+              <div class="item">
+                <div>你希望 Outlook 如何排序电子邮件，来帮助你专注于最重要的问题?</div>
+                <el-radio-group v-model="radio2">
+                  <div><el-radio :label="3">备选项</el-radio></div>
+                  <div><el-radio :label="6">备选项</el-radio></div>
+                  <div><el-radio :label="9">备选项</el-radio></div>
+                </el-radio-group>
+              </div>
+
+            </div>
+          </div>
+        </el-scrollbar>
       </div>
     </div>
   </div>
@@ -79,6 +196,11 @@
 
 <script>
 export default {
+  data() {
+    return {
+      radio2: 3
+    }
+  },
   created() {
 
   },
@@ -174,7 +296,7 @@ export default {
       flex: 1;
       display: flex;
       flex-direction: column;
-      .heading{
+      &>.heading{
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -187,6 +309,7 @@ export default {
         }
 
         .close{
+          margin-left: 16px;
           font-size: 18px;
         }
       }
